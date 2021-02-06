@@ -1,0 +1,50 @@
+@mixin clearfix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+/*  BreakPoints
+
+0-600px                  phone
+600px-900px              tab-port
+900px-1200px             tab-land
+1200px-1800px            For the common design pattern
+1800px +                 big-desktop
+
+1em = 16px
+
+for media queries rem does not depends on the developers specified root font size but depends
+on the browsers default font-size that is 16px. hence we prefer the em in media queries.
+
+ORDER: base + typography > general layout + grid > page layout > components
+
+*/
+
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media (max-width: 37.5em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == tab-port {
+		@media (max-width: 56.25em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == tab-land {
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == big-desktop {
+		@media (min-width: 112.5em) {
+			@content;
+		}
+	}
+}

@@ -1,0 +1,52 @@
+/* -------------------------------------------- */
+/* Reset on each and every element on the page */
+/* ------------------------------------------ */
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+/* -------------------------------------------- */
+/* Root Settings  */
+/* ------------------------------------------ */
+
+/*  
+Initially browsers root font-size is 16px
+Therefore 62.5% of 16px is 10px.
+Hence 1rem = 10px 
+*/
+
+html {
+	font-size: 62.5%;
+
+	@include respond(tab-land) {
+		font-size: 56.25%; // 1rem = 9px width < 1200px
+	}
+	@include respond(tab-port) {
+		font-size: 50%; // 1rem = 8px width < 900px
+	}
+	// @include respond(phone) {
+	// 	font-size: 43.75%; // 1rem = 6px width < 600px
+	// }
+	@include respond(big-desktop) {
+		font-size: 72%; // 1rem = 12px width > 1800px
+	}
+}
+
+body {
+	box-sizing: border-box;
+	padding: 3rem;
+
+	@include respond(tab-port) {
+		padding: 0;
+	}
+}
+
+::selection {
+	background-color: $color-primary;
+	color: $color-white;
+}
